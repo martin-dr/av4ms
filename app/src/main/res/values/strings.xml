@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">AV4ms</string>
+    <string name="title_home">Start</string>
+    <string name="title_log">Logs</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="action_options">Settings</string>
+    <string name="action_about">About</string>
+
+    <string name="settings_activity_title">Settings</string>
+
+
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_notify_single_slot_title">Notify for each slot</string>
+    <string name="pref_notify_single_slot_summary">Request a notification for each completed battery. If disabled, do not notify unless all slots are finished.</string>
+    <string name="pref_basic_auth_title">Authentication</string>
+    <string name="pref_basic_auth_summary">Use basic authentication to connect to server.</string>
+
+
+    <string name="pref_header_data_sync">Connection</string>
+
+    <string name="pref_url_title">Server Base URL</string>
+    <string name="pref_url_summary">Base URL of the AV4ms Python web service.</string>
+    <string name="pref_url_default">https://your.server.dyndns.com/</string>
+    <string name="pref_username_title">Login user name</string>
+    <string name="pref_username_summary">User name for authentication on the AV4ms web service.</string>
+    <string name="pref_password_title">Login password</string>
+
+    <string name="pref_header_general">General</string>
+
+
+    <string name="connection_test_action_label">Connection Test</string>
+
+    <string name="connection_test_activity_title">Test Server Connection</string>
+    <string name="connection_test_button_text">Connection Test</string>
+    <string name="connection_test_textarea_default">Press Button to verify server connectivity.</string>
+    <string name="connection_text_server_detail_template_auth">URL %1$s with user %2$s</string>
+    <string name="connection_text_server_detail_template_noauth">URL %1$s without authentication</string>
+    <string name="connection_text_success_template">Connection test to %1$s successful.</string>
+    <string name="connection_text_failure_template">Connection to %1$s failed with error:\n%2$s</string>
+    <string name="connection_text_av4ms_basic_version_na"><![CDATA[<p>&#160;</p><p>AV4ms base service (see <a href="http://av4ms.fahrner.name/">http://av4ms.fahrner.name/</a>) <b>not</b> found at given URL.</p>]]></string>
+    <string name="connection_text_av4ms_basic_version"><![CDATA[<p>&#160;</p><p>Found AV4ms base service (see <a href="http://av4ms.fahrner.name/">http://av4ms.fahrner.name/</a>) version <b>%1$d.%2$d</b>.</p>]]></string>
+    <string name="connection_text_app_extension_version_na"><![CDATA[<p>App extensions (see <a href="https://github.com/martin-dr/av4ms/wiki">Github</a>) not installed on server.</p>]]></string>
+    <string name="connection_text_app_extension_version"><![CDATA[<p>Found App extensions (see <a href="https://github.com/martin-dr/av4ms/wiki">Github</a>) version <b>%1$d.%2$d</b>.</p>]]></string>
+    <string name="connection_test_button_goto_settings_text">Open Connection Settings</string>
+
+    <string name="connection_err_bad_url">Malformed or invalid URL. Open connection settings and change server URL.</string>
+    <string name="connection_err_not_authenticated">Connection not possible with given credentials. Open connection settings and change user name and/or password.</string>
+    <string name="connection_err_not_configured">Connection data not configured. Open connection settings and configure URL and authentication data.</string>
+    <string name="connection_err_not_found">No AV4ms web service found at given URL.</string>
+    <string name="connection_manual_connection_hint"><![CDATA[<p><b>Manual Connection Test</b><br/>If current server URL is configured correctly, you will reach the web page of <i>AV4ms-Zelleninspektor</i> in any browser via this address: <a href="%1$s">%1$s</a>.</p>]]></string>
+
+    <string name="home_connection_header_init">No data.</string>
+    <string name="home_connection_header_no_conn">Data from %1$tm/%1$td/%1$tY at %1$tI:%1$tM:%1$tS %1$tp\nAV4ms-Server hat derzeit keine Verbindung zum Ladegerät.</string>
+    <string name="home_connection_header_data_time">Data from %1$tm/%1$td/%1$tY at %1$tI:%1$tM:%1$tS %1$tp</string>
+    <string name="logs_fragment_text">Currently, there are no messages..</string>
+
+
+    <string name="slot_state_error">Error</string>
+    <string name="slot_state_discharging">Discharging</string>
+    <string name="slot_state_charging">Charging</string>
+    <string name="slot_state_full">Full</string>
+    <string name="slot_state_empty">No Battery</string>
+    <string name="slot_state_unknown">Unknown</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="notifications_fragment_text">Currently, there are no notifications.</string>
+    <string name="slot_state_disconnected">No Data</string>
+    <string name="pref_data_sync_description">Enter the settings to connect to the AV4ms Python web service.</string>
+    <string name="slot_header_text">Slot %1$d</string>
+
+    <string name="slot_html_data_fmt">&lt;html>&lt;head>&lt;/head>&lt;body>&lt;div style=\"background-color: rgba(0,0,0,0);\">&lt;table border="0">
+        &lt;tr> &lt;th> &lt;/th> &lt;th align="right"> Time &lt;/th> &lt;th align="right"> U &lt;/th> &lt;th align="right"> \u00D8 U &lt;/th align="right"> &lt;th align="right"> I &lt;/th>  &lt;th align="right"> Q &lt;/th> &lt;/tr>
+        &lt;tr> &lt;th>Charge &lt;/th> &lt;td align="right"> %1$d:%2$02d:%3$02d &lt;/td> &lt;td align="right"> %4$.02f V&lt;/td> &lt;td align="right"> %5$.02f V&lt;/td> &lt;td align="right"> %6$d mA&lt;/td>  &lt;td align="right"> %7$d mAh&lt;/td> &lt;/tr>
+        &lt;tr> &lt;th>Disch. &lt;/th> &lt;td align="right"> %8$d:%9$02d:%10$02d &lt;/td> &lt;td align="right"> %11$.02f V&lt;/td> &lt;td align="right"> %12$.02f V&lt;/td> &lt;td align="right"> %13$d mA&lt;/td>  &lt;td align="right"> %14$d mAh&lt;/td> &lt;/tr>
+        &lt;/div>&lt;/body>&lt;/html>
+    </string>
+    <!--<string name="slot_charge_data_fmt">Laden: t: %1$d:%2$02d:%3$02d, U: %4$.02f V, I: %6$d mA, Q: %7$d mAh</string>-->
+    <!--<string name="slot_discharge_data_fmt">Entladen: t: %1$d:%2$02d:%3$02d, U: %4$.02f V, ø U %5$.02f V, I: %6$d mA, Q: %7$d mAh</string>-->
+
+</resources>

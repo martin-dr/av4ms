@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AV4ms</string>
+    <string name="action_about">Über</string>
+    <string name="action_options">Einstellungen</string>
+    <string name="connection_test_action_label">Verbindungstest</string>
+    <string name="connection_test_activity_title">Verbindungstest</string>
+    <string name="connection_test_button_text">Verbindungstest durchführen</string>
+    <string name="connection_test_textarea_default">Verbindungstest mit Klick auf Button starten.</string>
+    <string name="connection_text_failure_template">Verbindung zu %1$s ist mit folgendem Fehler fehlgeschlagen:\n%2$s</string>
+    <string name="connection_text_server_detail_template_auth">URL %1$s mit Benutzer %2$s</string>
+    <string name="connection_text_server_detail_template_noauth">URL %1$s ohne Authentifizierung</string>
+    <string name="connection_text_success_template">Verbindung zu %1$s erfolgreich.</string>
+
+    <string name="connection_text_av4ms_basic_version_na"><![CDATA[<p>&#160;</p><p>AV4ms-Basisdienst (siehe <a href="http://av4ms.fahrner.name/">http://av4ms.fahrner.name/</a>) <b>nicht</b> gefunden.</p>]]></string>
+    <string name="connection_text_av4ms_basic_version"><![CDATA[<p>&#160;</p><p>AV4ms-Basisdienst (siehe <a href="http://av4ms.fahrner.name/">http://av4ms.fahrner.name/</a>) Version <b>%1$d.%2$d</b> gefunden.</p>]]></string>
+    <string name="connection_text_app_extension_version_na"><![CDATA[<p>App-Erweiterungen (siehe <a href="https://github.com/martin-dr/av4ms/wiki">Github</a>) sind nicht auf dem Server installiert.</p>]]></string>
+    <string name="connection_text_app_extension_version"><![CDATA[<p>App-Erweiterungen (siehe <a href="https://github.com/martin-dr/av4ms/wiki">Github</a>) sind in der Version <b>%1$d.%2$d</b> auf dem Server installiert.</p>]]></string>
+    <string name="connection_test_button_goto_settings_text">Verbindungseinstellungen öffnen</string>
+
+    <string name="connection_err_bad_url">Ungültige URL. Bitte Verbindungseinstellungen öffnen und Server-URL anpassen.</string>
+    <string name="connection_err_not_authenticated">Login fehlgeschlagen. Bitte Verbindungseinstellungen prüfen.</string>
+    <string name="connection_err_not_configured">Keine Serververbindungsdaten konfiguriert. Bitte Verbindungseinstellungen öffnen und Server-URL sowie Login-Daten - falls benötigt - eintragen.</string>
+    <string name="connection_err_not_found">Kein AV4ms-Webservice bei der angegebenen Adresse gefunden.</string>
+    <string name="connection_manual_connection_hint"><![CDATA[<p><b>Manueller Verbindungstest:</b><br/>Falls die aktuelle Server-Adresse korrekt ist, müsste unter <a href="%1$s">%1$s</a> in einem Browser die Web-Oberfläche des AV4ms-Zelleninspektors zu sehen sein.</p>]]></string>
+
+    <string name="home_connection_header_init">Keine Daten.</string>
+    <string name="home_connection_header_no_conn">Meldung vom %1$td.%1$tm.%1$tY um %1$tH:%1$tM:%1$tS\nAV4ms-Server hat derzeit keine Verbindung zum Ladegerät.</string>
+    <string name="home_connection_header_data_time">Daten vom %1$td.%1$tm.%1$tY um %1$tH:%1$tM:%1$tS</string>
+    <string name="logs_fragment_text">Aktuell keine Log-Meldungen</string>
+    <string name="notifications_fragment_text">Aktuell keine Benachrichtigungen</string>
+    <string name="pref_basic_auth_summary">Verwende Standard-HTTP-Authentifizierung zur Verbindung mit dem Server.</string>
+    <string name="pref_basic_auth_title">Authentifizierung</string>
+    <string name="pref_header_data_sync">Verbindung</string>
+    <string name="pref_header_general">Allgemein</string>
+    <string name="pref_header_notifications">Benachrichtigungen</string>
+    <string name="pref_notify_single_slot_summary">Benachrichtige bei jedem abgeschlossenen Akkuschacht. Wenn deaktiviert, wird nur benachrichtigt, sobald die Behandlungen aller Schächte abgeschlossen sind.</string>
+    <string name="pref_notify_single_slot_title">Einzelschachtbenachrichtigung</string>
+    <string name="pref_password_title">Login Passwort</string>
+    <string name="pref_url_default">https://your.server.dyndns.com/</string>
+    <string name="pref_url_summary">Basis-URL des AV4ms-Python-Webservices.</string>
+    <string name="pref_url_title">Server Basis-URL</string>
+    <string name="pref_username_summary">Benutzename zur Server-Authentifizierung</string>
+    <string name="pref_username_title">Benutzername</string>
+    <string name="settings_activity_title">Einstellungen</string>
+    <string name="slot_state_charging">Laden</string>
+    <string name="slot_state_discharging">Entladen</string>
+    <string name="slot_state_empty">Kein Akku</string>
+    <string name="slot_state_error">Fehler</string>
+    <string name="slot_state_full">Aufgeladen</string>
+    <string name="slot_state_unknown">Unbekannt</string>
+    <string name="title_home">Start</string>
+    <string name="title_log">Logs</string>
+    <string name="title_notifications">Benachrichtigungen</string>
+    <string name="slot_state_disconnected">Keine Daten</string>
+    <string name="pref_data_sync_description">Bitte die Adresse und evtl. notwendige Zugangsdaten zur Verbindung mit dem AV4ms Python Web-Service eingeben.</string>
+    <string name="slot_header_text">Schacht %1$d</string>
+    <string name="slot_html_data_fmt">&lt;html>&lt;head>&lt;/head>&lt;body>&lt;div style=\"background-color: rgba(0,0,0,0);\">&lt;table border="0">
+        &lt;tr> &lt;th> &lt;/th> &lt;th align="right"> Zeit &lt;/th> &lt;th align="right"> U &lt;/th> &lt;th align="right"> \u00D8 U &lt;/th align="right"> &lt;th align="right"> I &lt;/th>  &lt;th align="right"> Q &lt;/th> &lt;/tr>
+        &lt;tr> &lt;th>Laden &lt;/th> &lt;td align="right"> %1$d:%2$02d:%3$02d &lt;/td> &lt;td align="right"> %4$.02f V&lt;/td> &lt;td align="right"> %5$.02f V&lt;/td> &lt;td align="right"> %6$d mA&lt;/td>  &lt;td align="right"> %7$d mAh&lt;/td> &lt;/tr>
+        &lt;tr> &lt;th>Entl. &lt;/th> &lt;td align="right"> %8$d:%9$02d:%10$02d &lt;/td> &lt;td align="right"> %11$.02f V&lt;/td> &lt;td align="right"> %12$.02f V&lt;/td> &lt;td align="right"> %13$d mA&lt;/td>  &lt;td align="right"> %14$d mAh&lt;/td> &lt;/tr>
+        &lt;/div>&lt;/body>&lt;/html>
+    </string>
+    <!--<string name="slot_charge_data_fmt">Laden: t: %1$d:%2$02d:%3$02d, U: %4$.02f V, I: %6$d mA, Q: %7$d mAh</string>-->
+    <!--<string name="slot_discharge_data_fmt">Entladen: t: %1$d:%2$02d:%3$02d, U: %4$.02f V, ø U %5$.02f V, I: %6$d mA, Q: %7$d mAh</string>-->
+
+</resources>

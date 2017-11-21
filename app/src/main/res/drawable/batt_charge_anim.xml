@@ -1,0 +1,127 @@
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group android:name="group_1">
+                <group android:name="group">
+                    <path
+                        android:name="path"
+                        android:pathData="M 19 0 L 19 16 L 2 16 L 2 8 L 19 8 Z M 21 6 L 0 6 L 0 18 L 21 18 L 21 6 Z M 22 15 L 22.75 15 C 23.44 15 24 14.44 24 13.75 L 24 10.25 C 24 9.56 23.44 9 22.75 9 L 22 9 L 22 15 Z"
+                        android:fillColor="#000"
+                        android:strokeWidth="1"/>
+                    <path
+                        android:name="path_1"
+                        android:pathData="M 6 9 L 3 9 L 3 15 L 6 15 L 6 9 Z"
+                        android:fillColor="#FF000000"
+                        android:strokeAlpha="0"
+                        android:strokeWidth="1"/>
+                    <path
+                        android:name="path_2"
+                        android:pathData="M 10 9 L 7 9 L 7 15 L 10 15 L 10 9 Z"
+                        android:fillColor="#FF000000"
+                        android:strokeWidth="1"/>
+                    <path
+                        android:name="path_3"
+                        android:pathData="M 14 9 L 11 9 L 11 15 L 14 15 L 14 9 Z"
+                        android:fillColor="#FF000000"
+                        android:strokeWidth="1"/>
+                    <path
+                        android:name="path_4"
+                        android:pathData="M 18 9 L 15 9 L 15 15 L 18 15 L 18 9 Z"
+                        android:fillColor="#FF000000"
+                        android:strokeWidth="1"/>
+                </group>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="path_1">
+        <aapt:attr name="android:animation">
+            <set xmlns:android="http://schemas.android.com/apk/res/android">
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:duration="10"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="10"
+                    android:duration="490"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path_2">
+        <aapt:attr name="android:animation">
+            <set xmlns:android="http://schemas.android.com/apk/res/android">
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:duration="10"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="500"
+                    android:duration="500"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path_3">
+        <aapt:attr name="android:animation">
+            <set xmlns:android="http://schemas.android.com/apk/res/android">
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="1000"
+                    android:duration="500"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:duration="10"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="path_4">
+        <aapt:attr name="android:animation">
+            <set xmlns:android="http://schemas.android.com/apk/res/android">
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:duration="10"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+                <objectAnimator
+                    android:propertyName="fillAlpha"
+                    android:startOffset="1500"
+                    android:duration="500"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:valueType="floatType"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

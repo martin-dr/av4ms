@@ -1,0 +1,10 @@
+/build
+/local.properties
+/.idea/libraries/*.xml
+/.idea/workspace.xml
+/.idea/libraries
+/.gradle
+/gradle.properties
+/local-accounts.properties
+/.idea/dictionaries
+/.idea/inspectionProfiles
