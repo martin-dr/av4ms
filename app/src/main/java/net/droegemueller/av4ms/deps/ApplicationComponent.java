@@ -16,6 +16,7 @@
 package net.droegemueller.av4ms.deps;
 
 import net.droegemueller.av4ms.activities.ConnectionTestActivity;
+import net.droegemueller.av4ms.activities.HomeMainFragment;
 import net.droegemueller.av4ms.activities.MainActivity;
 import net.droegemueller.av4ms.core.srv.ServerAccessModule;
 
@@ -30,6 +31,8 @@ public interface ApplicationComponent {
     void inject(ConnectionTestActivity activity);
 
     void inject(MainActivity activity);
+
+    void inject(HomeMainFragment fragment);
 
     ConnectionTestSubComponent plus(ConnectionTestModule module);
     MainActivitySubComponent plus(MainActivityModule module);

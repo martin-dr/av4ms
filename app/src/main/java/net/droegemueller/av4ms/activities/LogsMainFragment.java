@@ -60,7 +60,7 @@ public class LogsMainFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        throw new RuntimeException("Test-Exception");
+        //throw new RuntimeException("Test-Exception");
     }
 
     @Override

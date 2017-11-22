@@ -1,23 +1,36 @@
 package net.droegemueller.av4ms.activities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.droegemueller.av4ms.App;
 import net.droegemueller.av4ms.R;
 import net.droegemueller.av4ms.Av4msBasicReadData;
+import net.droegemueller.av4ms.core.srv.PreferenceRepository;
+import net.droegemueller.av4ms.core.srv.ServerInteractorException;
+import net.droegemueller.av4ms.deps.ApplicationComponent;
 
 import java.util.Date;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+import static android.preference.PreferenceActivity.EXTRA_SHOW_FRAGMENT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +47,14 @@ public class HomeMainFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     @BindView(R.id.home_text) TextView homeText;
+    @BindView(R.id.home_main_button_goto_settings) Button gotoConnectionSettings;
+
+    @Inject
+    PreferenceRepository preferences;
+
+
+    @Inject
+    Context context;
 
     private Date lastDate = null;
     private Av4msBasicReadData lastData = null;
@@ -41,6 +62,12 @@ public class HomeMainFragment extends Fragment {
 
     public HomeMainFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        App.getComponent().inject(this);
     }
 
     /**
@@ -96,6 +123,27 @@ public class HomeMainFragment extends Fragment {
         updateFromReceivedData();
     }
 
+    public void showErrorHint(Throwable throwable) {
+        String fmt = getResources().getString(R.string.connection_text_failure_template);
+        String msg;
+        if (throwable instanceof ServerInteractorException.BadUrl) {
+            msg = getResources().getString(R.string.connection_err_bad_url);
+        } else if (throwable instanceof ServerInteractorException.NotAuthenticated) {
+            msg = getResources().getString(R.string.connection_err_not_authenticated);
+        } else if (throwable instanceof ServerInteractorException.NotConfigured) {
+            msg = getResources().getString(R.string.connection_err_not_configured);
+        } else if (throwable instanceof ServerInteractorException.NotFound) {
+            msg = getResources().getString(R.string.connection_err_not_found);
+        } else {
+            msg = throwable.getLocalizedMessage();
+        }
+        String result = String.format(fmt, ConnectionTestActivity.getServerConnectionDisplayString(getResources(), preferences), msg);
+        homeText.setText(result);
+        gotoConnectionSettings.setVisibility(View.VISIBLE);
+        //homeText.setText("Fehler " + throwable.getMessage());
+    }
+
+
     private void updateFromReceivedData() {
         String s;
         if (lastDate == null || lastData == null) {
@@ -108,6 +156,7 @@ public class HomeMainFragment extends Fragment {
             String fmt = getResources().getString(R.string.home_connection_header_no_conn);
             s = String.format(fmt, lastDate);
         }
+        gotoConnectionSettings.setVisibility(View.GONE);
         homeText.setText(s);
     }
 
@@ -142,4 +191,13 @@ public class HomeMainFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    @OnClick(R.id.home_main_button_goto_settings)
+    void onGotoConnectionSettings(View view) {
+        final Intent intent = new Intent(context, SettingsActivity.class);
+        intent.putExtra(EXTRA_SHOW_FRAGMENT, SettingsActivity.DataSyncPreferenceFragment.class.getName());
+        startActivity(intent);
+    }
+
+
 }

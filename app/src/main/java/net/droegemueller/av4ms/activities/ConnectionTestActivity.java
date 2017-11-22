@@ -120,7 +120,7 @@ public class ConnectionTestActivity extends BaseActivity implements ConnectionTe
 
     public static String stateText(Resources resources, Av4msBasicReadData.ChargerSlotStandardData s) {
         int key;
-        if (s.connected) {
+        if (s != null && s.connected) {
             switch (s.slotState) {
                 case Charging:
                     key = R.string.slot_state_charging;
@@ -156,7 +156,7 @@ public class ConnectionTestActivity extends BaseActivity implements ConnectionTe
     @Override
     public void updateBasicData(MesswerteResponse data) {
         String fmt = getResources().getString(R.string.connection_text_success_template);
-        String serverData = getServerConnectionDisplayString();
+        String serverData = getServerConnectionDisplayString(getResources(), preferences);
         String result = String.format(fmt, serverData);
         textView.setText(result);
     }
@@ -204,15 +204,15 @@ public class ConnectionTestActivity extends BaseActivity implements ConnectionTe
     }
 
 
-    private String getServerConnectionDisplayString() {
+    public static String getServerConnectionDisplayString(Resources resources, PreferenceRepository preferences) {
         String serverData;
         if (preferences.getPrefServerDoAuth(false)) {
-            serverData = String.format(getResources().getString(R.string.connection_text_server_detail_template_auth),
+            serverData = String.format(resources.getString(R.string.connection_text_server_detail_template_auth),
                     preferences.getPrefServerUrl(""),
                     preferences.getPrefServerUsername(""));
         }
         else {
-            serverData = String.format(getResources().getString(R.string.connection_text_server_detail_template_noauth),
+            serverData = String.format(resources.getString(R.string.connection_text_server_detail_template_noauth),
                     preferences.getPrefServerUrl(""));
         }
         return serverData;
@@ -233,7 +233,7 @@ public class ConnectionTestActivity extends BaseActivity implements ConnectionTe
         } else {
             msg = throwable.getLocalizedMessage();
         }
-        String result = String.format(fmt, getServerConnectionDisplayString(), msg);
+        String result = String.format(fmt, getServerConnectionDisplayString(getResources(), preferences), msg);
         textView.setText(result);
     }
 }

@@ -23,6 +23,7 @@ import net.droegemueller.av4ms.core.domain.client.MesswerteResponse;
 import net.droegemueller.av4ms.core.srv.MainActivityPresenter;
 import net.droegemueller.av4ms.core.srv.MainActivityView;
 import net.droegemueller.av4ms.core.srv.PreferenceRepository;
+import net.droegemueller.av4ms.core.srv.ServerInteractorException;
 import net.droegemueller.av4ms.deps.ApplicationComponent;
 
 import java.util.Timer;
@@ -242,14 +243,20 @@ public class MainActivity extends BaseActivity implements MainActivityView, Slot
         successCount = 0;
         failCount++;
 
-        boolean isBatteryFragmentActive = mainFragment != null && mainFragment instanceof HomeMainFragment;
+        boolean showErrorHint = throwable instanceof ServerInteractorException;
+        boolean showInactive = showErrorHint || failCount > 20;
 
-        if (isBatteryFragmentActive && (previoussuccessCount == 0 && failCount > 10 || failCount > 30)) {
-            // TODO: Change fragment
-        } else if (isBatteryFragmentActive && failCount % 10 == 0) {
-            Toast.makeText(this, throwable.toString(), Toast.LENGTH_SHORT).show();
-        } else if (!isBatteryFragmentActive) {
-            // TODO: Update Fehlerseite
+        if (showErrorHint) {
+            if (mainFragment != null && mainFragment instanceof HomeMainFragment) {
+                ((HomeMainFragment) mainFragment).showErrorHint((ServerInteractorException)throwable);
+            }
+        }
+        if (showInactive) {
+            for (SlotMainFragment slot : slots) {
+                if (slot != null) {
+                    slot.showInactive();
+                }
+            }
         }
     }
 

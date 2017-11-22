@@ -2,6 +2,7 @@ package net.droegemueller.av4ms.activities;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,10 +14,14 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.droegemueller.av4ms.App;
 import net.droegemueller.av4ms.R;
 import net.droegemueller.av4ms.Av4msBasicReadData;
+import net.droegemueller.av4ms.deps.ApplicationComponent;
 
 import java.util.Date;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +36,7 @@ public class SlotMainFragment extends Fragment {
 
     private Date lastDate = null;
     private Av4msBasicReadData lastData = null;
+    private boolean showInactive = false;
 
     private OnSlotInteractionListener mListener;
 
@@ -124,7 +130,7 @@ public class SlotMainFragment extends Fragment {
 
     public static int stateImageKey(Av4msBasicReadData.ChargerSlotStandardData s) {
         int key;
-        if (s.connected) {
+        if (s != null && s.connected) {
             switch (s.slotState) {
                 case Charging:
                     key = R.drawable.batt_charge_anim2;
@@ -151,17 +157,23 @@ public class SlotMainFragment extends Fragment {
         return key;
     }
 
+    public void showInactive() {
+        showInactive = true;
+        updateFromReceivedData();
+    }
+
+
     public void updateSlotData(Av4msBasicReadData d) {
         lastData = d;
         lastDate = new Date();
+        showInactive = false;
         updateFromReceivedData();
     }
 
     private void updateFromReceivedData() {
-        Av4msBasicReadData.ChargerSlotStandardData slotData = lastData.slots[slotNo - 1];
-        Av4msBasicReadData.SlotState slotState = slotData.slotState;
+        Av4msBasicReadData.ChargerSlotStandardData slotData = lastData != null ? lastData.slots[slotNo - 1] : null;
 
-        int imageKey = stateImageKey(slotData);
+        int imageKey = showInactive ? R.drawable.batt_qu : stateImageKey(slotData);
         if (oldImageKey == null || imageKey != oldImageKey) {
             Drawable res = ResourcesCompat.getDrawable(getResources(), imageKey, null);
             viewImage.setImageDrawable(res);
@@ -171,7 +183,7 @@ public class SlotMainFragment extends Fragment {
             }
             oldImageKey = imageKey;
         }
-        viewStateText.setText(ConnectionTestActivity.stateText(getResources(), slotData));
+        viewStateText.setText(ConnectionTestActivity.stateText(getResources(), showInactive ? null : slotData));
 //        chargeText.setText(String.format(getResources().getString(R.string.slot_charge_data_fmt),
 //                slotData.chargeTime / 3600, (slotData.chargeTime % 3600) / 60, slotData.chargeTime % 60,
 //                slotData.chargingVoltage / 1000.0, slotData.chargingAverageVoltage / 1000.0, slotData.chargingCurrent,
@@ -180,14 +192,19 @@ public class SlotMainFragment extends Fragment {
 //                slotData.dischargeTime / 3600, (slotData.dischargeTime % 3600) / 60, slotData.dischargeTime % 60,
 //                slotData.dischargingVoltage / 1000.0, slotData.dischargingAverageVoltage / 1000.0, slotData.dischargingCurrent,
 //                slotData.dischargeCapacity));
-        String html = String.format(getResources().getString(R.string.slot_html_data_fmt),
-                slotData.chargeTime / 3600, (slotData.chargeTime % 3600) / 60, slotData.chargeTime % 60,
-                slotData.chargingVoltage / 1000.0, slotData.chargingAverageVoltage / 1000.0, slotData.chargingCurrent,
-                slotData.chargeCapacity,
-                slotData.dischargeTime / 3600, (slotData.dischargeTime % 3600) / 60, slotData.dischargeTime % 60,
-                slotData.dischargingVoltage / 1000.0, slotData.dischargingAverageVoltage / 1000.0, slotData.dischargingCurrent,
-                slotData.dischargeCapacity);
-        htmlTable.setBackgroundColor(0);
-        htmlTable.loadData(html, "text/html; charset=utf-8", "utf-8");
+        if (showInactive) {
+            htmlTable.loadUrl("about:blank");
+            htmlTable.setBackgroundColor(0);
+        } else {
+            String html = String.format(getResources().getString(R.string.slot_html_data_fmt),
+                    slotData.chargeTime / 3600, (slotData.chargeTime % 3600) / 60, slotData.chargeTime % 60,
+                    slotData.chargingVoltage / 1000.0, slotData.chargingAverageVoltage / 1000.0, slotData.chargingCurrent,
+                    slotData.chargeCapacity,
+                    slotData.dischargeTime / 3600, (slotData.dischargeTime % 3600) / 60, slotData.dischargeTime % 60,
+                    slotData.dischargingVoltage / 1000.0, slotData.dischargingAverageVoltage / 1000.0, slotData.dischargingCurrent,
+                    slotData.dischargeCapacity);
+            htmlTable.setBackgroundColor(0);
+            htmlTable.loadData(html, "text/html; charset=utf-8", "utf-8");
+        }
     }
 }
